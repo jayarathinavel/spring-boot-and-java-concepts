@@ -82,3 +82,8 @@ The change log file looks like the below one,
 
 **4. Start the Project**
 After making the necessary changes, Start the application. It will make the changes to the database of corresponding environment during starting. And the same change will be noted down to not execute it again. For this we need to provide an unique id to each change set. 
+
+**References**
+- [https://www.youtube.com/watch?v=xjXHecGOy84](https://www.youtube.com/watch?v=xjXHecGOy84)
+- [https://github.com/dicksonmulli/liquibase-with-springboot](https://github.com/dicksonmulli/liquibase-with-springboot)
+- [https://docs.liquibase.com/tools-integrations/springboot/springboot.html](https://docs.liquibase.com/tools-integrations/springboot/springboot.html)

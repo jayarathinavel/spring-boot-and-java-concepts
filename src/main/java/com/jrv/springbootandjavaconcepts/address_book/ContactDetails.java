@@ -6,13 +6,13 @@ import javax.persistence.*;
 @Table(name = "adb_contact_details")
 public class ContactDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "adb_contacts_seq")
+    @SequenceGenerator(initialValue = 1, name = "adb_contacts_seq", sequenceName = "contacts_sequence")
     @Column(name = "contact_details_id", nullable = false)
     private Integer contactDetailsId;
 
-    @ManyToOne
-    @JoinColumn(name = "address_book_id")
-    private AddressBookEntity addressBook;
+    @Column(name = "address_book_id")
+    private Integer addressBookId;
 
     @Column(name = "value")
     private String value;
@@ -21,7 +21,7 @@ public class ContactDetails {
     private String type;
 
     @Column(name = "is_main_contact")
-    private boolean isMainContact;
+    private boolean isMainContact = false;
 
     @Column(name = "label")
     private String label;
@@ -34,12 +34,12 @@ public class ContactDetails {
         this.contactDetailsId = contactDetailsId;
     }
 
-    public AddressBookEntity getAddressBook() {
-        return addressBook;
+    public Integer getAddressBookId() {
+        return addressBookId;
     }
 
-    public void setAddressBook(AddressBookEntity addressBook) {
-        this.addressBook = addressBook;
+    public void setAddressBookId(Integer addressBookId) {
+        this.addressBookId = addressBookId;
     }
 
     public String getValue() {

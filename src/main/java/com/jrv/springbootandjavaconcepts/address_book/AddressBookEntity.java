@@ -8,7 +8,8 @@ import java.util.List;
 @Table(name = "adb_address_book")
 public class AddressBookEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "adb_seq")
+    @SequenceGenerator(initialValue = 1, name = "adb_seq", sequenceName = "address_book_sequence")
     @Column(name = "address_book_id")
     private int addressBookId;
 
@@ -21,10 +22,12 @@ public class AddressBookEntity {
     @Column(name = "nickname")
     private String nickName;
 
-    @OneToMany(mappedBy = "addressBook")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "address_book_id", referencedColumnName = "address_book_id")
     private List<ContactDetails> contactDetails;
 
-    @OneToMany(mappedBy = "addressBook")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "address_book_id", referencedColumnName = "address_book_id")
     private List<AddressDetails> addressDetails;
 
     @Column(name = "organization")

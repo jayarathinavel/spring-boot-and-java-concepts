@@ -6,13 +6,13 @@ import javax.persistence.*;
 @Table(name = "adb_address_details")
 public class AddressDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "adb_address_seq")
+    @SequenceGenerator(initialValue = 1, name = "adb_address_seq", sequenceName = "address_sequence")
     @Column(name = "address_details_id", nullable = false)
-    private Integer id;
+    private Integer addressDetailsId;
 
-    @ManyToOne
-    @JoinColumn(name = "address_book_id")
-    private AddressBookEntity addressBook;
+    @Column(name = "address_book_id")
+    private Integer addressBookId;
 
     @Column(name = "line_1")
     private String lineOne;
@@ -29,20 +29,20 @@ public class AddressDetails {
     @Column(name = "label")
     private String label;
 
-    public Integer getId() {
-        return id;
+    public Integer getAddressDetailsId() {
+        return addressDetailsId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setAddressDetailsId(Integer addressDetailsId) {
+        this.addressDetailsId = addressDetailsId;
     }
 
-    public AddressBookEntity getAddressBook() {
-        return addressBook;
+    public Integer getAddressBookId() {
+        return addressBookId;
     }
 
-    public void setAddressBook(AddressBookEntity addressBook) {
-        this.addressBook = addressBook;
+    public void setAddressBookId(Integer addressBookId) {
+        this.addressBookId = addressBookId;
     }
 
     public String getLineOne() {

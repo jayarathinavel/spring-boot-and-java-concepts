@@ -1,6 +1,7 @@
 package com.jrv.springbootandjavaconcepts.address_book;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,13 @@ public class AddressBookService {
     }
 
     public ResponseEntity<String> deleteByAddressBookId(Integer addressBookId){
-        addressBookRepository.deleteById(addressBookId);
-        return new ResponseEntity<>("Deleted Successfully", HttpStatus.OK);
+        ResponseEntity<String> responseEntity;
+        try{
+            addressBookRepository.deleteById(addressBookId);
+            responseEntity = new ResponseEntity<>("Deleted Successfully", HttpStatus.OK);
+        } catch (EmptyResultDataAccessException emptyResultDataAccessException){
+            responseEntity = new ResponseEntity<>("Given ID cannot be found in Database", HttpStatus.NOT_FOUND);
+        }
+        return responseEntity;
     }
 }

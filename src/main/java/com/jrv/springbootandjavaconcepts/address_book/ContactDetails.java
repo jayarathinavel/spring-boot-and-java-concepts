@@ -1,9 +1,14 @@
 package com.jrv.springbootandjavaconcepts.address_book;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "adb_contact_details")
+@Getter
+@Setter
 public class ContactDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "adb_contacts_seq")
@@ -26,51 +31,4 @@ public class ContactDetails {
     @Column(name = "label")
     private String label;
 
-    public Integer getContactDetailsId() {
-        return contactDetailsId;
-    }
-
-    public void setContactDetailsId(Integer contactDetailsId) {
-        this.contactDetailsId = contactDetailsId;
-    }
-
-    public Integer getAddressBookId() {
-        return addressBookId;
-    }
-
-    public void setAddressBookId(Integer addressBookId) {
-        this.addressBookId = addressBookId;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public boolean isMainContact() {
-        return isMainContact;
-    }
-
-    public void setMainContact(boolean mainContact) {
-        isMainContact = mainContact;
-    }
-
-    public String getLabel() {
-        return label;
-    }
-
-    public void setLabel(String label) {
-        this.label = label;
-    }
 }

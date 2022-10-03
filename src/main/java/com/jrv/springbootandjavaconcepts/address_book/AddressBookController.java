@@ -5,9 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
+@CrossOrigin
 public class AddressBookController {
 
     @Autowired
@@ -20,6 +23,12 @@ public class AddressBookController {
     public AddressBookDTO findByAddressBookId(@RequestParam Integer id){
         Optional<AddressBookEntity> addressBookEntity = addressBookService.findByAddressBookId(id);
         return modelMapper.map(addressBookEntity, AddressBookDTO.class);
+    }
+
+    @GetMapping("/address-book/find-all")
+    public List<AddressBookDTO> findAllAddressBookLists(){
+        List<AddressBookEntity> addressBookEntity = addressBookService.findAll();
+        return addressBookEntity.stream().map(list -> modelMapper.map(list, AddressBookDTO.class)).collect(Collectors.toList()) ;
     }
 
     @PostMapping("/address-book/save")

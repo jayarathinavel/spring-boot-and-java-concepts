@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,6 +18,10 @@ public class AddressBookService {
     public Optional<AddressBookEntity> findByAddressBookId(Integer addressBookId){
         return addressBookRepository.findById(addressBookId);
     }
+    public List<AddressBookEntity> findAll(){
+        return addressBookRepository.findAll();
+    }
+
 
     @Transactional
     public Optional<AddressBookEntity> addToAddressBook(AddressBookEntity addressBookEntity){

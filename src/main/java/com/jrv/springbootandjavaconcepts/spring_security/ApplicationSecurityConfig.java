@@ -3,7 +3,7 @@ package com.jrv.springbootandjavaconcepts.spring_security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
-import static com.jrv.springbootandjavaconcepts.spring_security.ApplicationUserPermission.STUDENT_WRITE;
 import static com.jrv.springbootandjavaconcepts.spring_security.ApplicationUserRole.*;
 
 /**
@@ -24,6 +23,8 @@ import static com.jrv.springbootandjavaconcepts.spring_security.ApplicationUserR
  */
 @Configuration
 @EnableWebSecurity
+//To Tell the Spring Security to use Annotation based Authentication
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 @Deprecated(since = "10/Oct/22", forRemoval = true)
 public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -41,10 +42,11 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/", "index", "/css/*", "/js/*").permitAll()
                 .antMatchers("/students/**").hasRole(STUDENT.name())
+                /* Commented these lines to use Annotation (PreAuthorise()) based Authentication instead of Authority Based
                 .antMatchers(HttpMethod.DELETE, "/management/students/**").hasAuthority(STUDENT_WRITE.getPermission())
                 .antMatchers(HttpMethod.POST, "/management/students/**").hasAuthority(STUDENT_WRITE.getPermission())
                 .antMatchers(HttpMethod.PUT, "/management/students/**").hasAuthority(STUDENT_WRITE.getPermission())
-                .antMatchers(HttpMethod.GET, "/management/students/**").hasAnyRole(ADMIN.name(), ADMIN_TRAINEE.name())
+                .antMatchers(HttpMethod.GET, "/management/students/**").hasAnyRole(ADMIN.name(), ADMIN_TRAINEE.name())*/
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -56,7 +58,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     protected UserDetailsService userDetailsService() {
         UserDetails userJon = User.builder()
                 .username("Jon")
-                .password(passwordEncoder.encode("qwerty"))
+                .password(passwordEncoder.encode("jonjon"))
 //                .roles(STUDENT.name()) //ROLE_STUDENT
                 .authorities(STUDENT.grantedAuthorities())
                 .build();
@@ -70,7 +72,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
         UserDetails adminTraineeUser = User.builder()
                 .username("Tom")
-                .password(passwordEncoder.encode("qwerty"))
+                .password(passwordEncoder.encode("tomtom"))
 //                .roles(ADMIN_TRAINEE.name())
                 .authorities(ADMIN_TRAINEE.grantedAuthorities())
                 .build();

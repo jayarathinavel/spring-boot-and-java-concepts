@@ -1,4 +1,4 @@
-package com.jrv.springbootandjavaconcepts.spring_security;
+package com.jrv.springbootandjavaconcepts.features.students;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;

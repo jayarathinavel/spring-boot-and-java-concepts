@@ -1,4 +1,4 @@
-package com.jrv.springbootandjavaconcepts.address_book;
+package com.jrv.springbootandjavaconcepts.api.address_book;
 
 import lombok.Getter;
 import lombok.Setter;

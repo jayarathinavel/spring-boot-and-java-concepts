@@ -1,4 +1,4 @@
-package com.jrv.springbootandjavaconcepts.spring_security;
+package com.jrv.springbootandjavaconcepts.security;
 
 import com.google.common.collect.Sets;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

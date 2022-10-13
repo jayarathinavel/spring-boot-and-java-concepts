@@ -1,4 +1,4 @@
-package com.jrv.springbootandjavaconcepts.spring_security;
+package com.jrv.springbootandjavaconcepts.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

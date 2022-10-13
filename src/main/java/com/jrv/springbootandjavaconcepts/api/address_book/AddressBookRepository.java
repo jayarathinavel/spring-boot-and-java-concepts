@@ -1,4 +1,4 @@
-package com.jrv.springbootandjavaconcepts.address_book;
+package com.jrv.springbootandjavaconcepts.api.address_book;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

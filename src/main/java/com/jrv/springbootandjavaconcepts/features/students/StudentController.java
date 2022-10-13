@@ -1,4 +1,4 @@
-package com.jrv.springbootandjavaconcepts.spring_security;
+package com.jrv.springbootandjavaconcepts.features.students;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

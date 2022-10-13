@@ -1,4 +1,4 @@
-package com.jrv.springbootandjavaconcepts.spring_security;
+package com.jrv.springbootandjavaconcepts.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +16,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import java.util.concurrent.TimeUnit;
 
-import static com.jrv.springbootandjavaconcepts.spring_security.ApplicationUserRole.*;
+import static com.jrv.springbootandjavaconcepts.security.ApplicationUserRole.*;
 
 /**
  *
@@ -43,7 +43,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "index", "/css/*", "/js/*").permitAll()
+                .antMatchers("/", "index", "/css/*", "/js/*", "/api/**").permitAll()
                 .antMatchers("/students/**").hasRole(STUDENT.name())
                 /* Commented these lines to use Annotation (PreAuthorise()) based Authentication instead of Authority Based
                 .antMatchers(HttpMethod.DELETE, "/management/students/**").hasAuthority(STUDENT_WRITE.getPermission())

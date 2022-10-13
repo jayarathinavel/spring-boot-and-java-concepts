@@ -1,4 +1,4 @@
-package com.jrv.springbootandjavaconcepts.spring_security;
+package com.jrv.springbootandjavaconcepts.security;
 
 public enum ApplicationUserPermission {
     STUDENT_READ("student:read"),

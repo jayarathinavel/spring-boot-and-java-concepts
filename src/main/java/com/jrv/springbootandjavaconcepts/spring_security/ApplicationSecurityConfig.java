@@ -12,6 +12,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import java.util.concurrent.TimeUnit;
 
 import static com.jrv.springbootandjavaconcepts.spring_security.ApplicationUserRole.*;
 
@@ -50,7 +53,16 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated()
                 .and()
-                .formLogin();
+                .formLogin()
+                .loginPage("/login").permitAll()
+                .defaultSuccessUrl("/login-success")
+                .and()
+                .rememberMe().tokenValiditySeconds((int) TimeUnit.DAYS.toSeconds(28)).key("Secured")
+                .and()
+                .logout().logoutUrl("/logoff")
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logoff", "GET"))
+                .clearAuthentication(true).invalidateHttpSession(true).deleteCookies("JSESSIONID", "remember-me")
+                .logoutSuccessUrl("/");
     }
 
     @Override

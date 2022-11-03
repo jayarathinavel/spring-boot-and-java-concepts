@@ -1,27 +1,20 @@
 package com.jrv.springbootandjavaconcepts.features.students;
 
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "feature_students")
+@Getter
+@Setter
 public class Student {
-    private final Integer studentId;
-    private final String studentName;
 
-    public Student(Integer studentId, String studentName) {
-        this.studentId = studentId;
-        this.studentName = studentName;
-    }
+    @Id
+    @Column(name = "student_id")
+    private Integer studentId;
 
-    public Integer getStudentId() {
-        return studentId;
-    }
-
-    public String getStudentName() {
-        return studentName;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "studentId=" + studentId +
-                ", studentName='" + studentName + '\'' +
-                '}';
-    }
+    @Column(name = "student_name")
+    private String studentName;
 }

@@ -24,6 +24,7 @@
     <h1>
         Hello World
     </h1>
+    <p sec:authorize="isAuthenticated()"><a href="/views/students">Students</a></p>
     <p sec:authorize="isAnonymous()"><a href="/login">Login</a></p>
     <p sec:authorize="isAuthenticated()"><a href="/logoff">Logout</a></p>
 </div>

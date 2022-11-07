@@ -42,7 +42,14 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "index", "/css/*", "/js/*", "/public/**").permitAll()
+                .antMatchers("/", "index", "/css/*", "/js/*", "/public/**",
+                        //For Swagger UI
+                        "/v2/api-docs",
+                        "/configuration/ui",
+                        "/swagger-resources/**",
+                        "/configuration/security",
+                        "/swagger-ui.html",
+                        "/webjars/**").permitAll()
                 //.antMatchers("/students/**").hasRole(STUDENT.name())    //Role Based Authentication
                 /* Commented these lines to use Annotation (PreAuthorise()) based Authentication instead of Authority Based
                 .antMatchers(HttpMethod.DELETE, "/management/students/**").hasAuthority(STUDENT_WRITE.getPermission())

@@ -1,4 +1,11 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Login Success</title></head>
+<body>
 <h1>
-    Login Success
+    Login Success, welcome  <span th:text="${user.username}"></span>
 </h1>
+<a href="/views/students">Students</a> <br>
+<a href="/">Home</a> <br>
 <a href="/logoff">Log Off</a>
+</body>
+</html>

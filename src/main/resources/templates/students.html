@@ -1,0 +1,17 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Students</title></head>
+<body>
+<h1>
+    Students
+</h1>
+<div>
+    <table>
+        <tr th:each="student: ${studentsList}">
+            <td th:text="${student.studentId}" />
+            <td th:text="${student.studentName}" />
+        </tr>
+    </table>
+</div>
+<a href="/">Home</a>
+</body>
+</html>

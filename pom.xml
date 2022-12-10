@@ -10,6 +10,7 @@
     </parent>
     <groupId>com.jrv</groupId>
     <artifactId>spring-boot-and-java-concepts</artifactId>
+    <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>Spring Boot and Java Concepts</name>
     <description>Code Snippets and Concepts Repo for Spring Boot and Java</description>

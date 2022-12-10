@@ -39,7 +39,7 @@ public class AddressBookController {
         return modelMapper.map(addressBookEntityResponse, AddressBookDTO.class);
     }
 
-    @PostMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteByAddressBookId(@PathVariable("id") Integer addressBookId){
         return addressBookService.deleteByAddressBookId(addressBookId);
     }

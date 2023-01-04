@@ -6,6 +6,20 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
     <changeSet id="3" author="Jayarathinavel">
+        <createTable tableName="users">
+            <column name="user_id" type="number">
+                <constraints primaryKey="true" primaryKeyName="users_pk"/>
+            </column>
+            <column name="username" type="text">
+                <constraints nullable="false" unique="true" uniqueConstraintName="users_unique_key"/>
+            </column>
+            <column name="password" type="text">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="4" author="Jayarathinavel">
         <insert tableName="users">
             <column name="user_id" value="0"/>
             <column name="username" value="admin"/>

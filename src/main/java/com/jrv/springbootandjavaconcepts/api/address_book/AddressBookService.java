@@ -1,4 +1,4 @@
-package com.jrv.springbootandjavaconcepts.address_book;
+package com.jrv.springbootandjavaconcepts.api.address_book;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;

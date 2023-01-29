@@ -6,4 +6,8 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
     <include file="db/changelog/changelog-variables.xml"/>
+    <include file="db/changelog/changelog-users.xml"/>
+    <include file="db/changelog/changelog-lt-status.xml"/>
+    <include file="db/changelog/changelog-lt-borrower-information.xml"/>
+
 </databaseChangeLog>

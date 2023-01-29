@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="7" author="Jayarathinavel">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="lt_borrower_information"/>
+            </not>
+        </preConditions>
+        <createTable tableName="lt_borrower_information">
+            <column name="borrower_id" type="number">
+                <constraints primaryKey="true" primaryKeyName="lt_borrower_information_pkey"/>
+            </column>
+            <column name="borrower_name" type="text"/>
+            <column name="email" type="text"/>
+            <column name="phone_number" type="text"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="8" author="Jayarathinavel">
+        <insert tableName="lt_borrower_information">
+            <column name="borrower_id"  value="0"/>
+            <column name="borrower_name" value="No Borrower"/>
+            <column name="email" value=""/>
+            <column name="phone_number" value=""/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

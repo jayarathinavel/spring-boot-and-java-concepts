@@ -9,12 +9,13 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/public/api/lend-tracker")
+@RequestMapping("/api/lend-tracker")
 public class LendTrackerController {
 
     @Autowired
@@ -26,7 +27,7 @@ public class LendTrackerController {
     @GetMapping("/find-all-lists")
     public List<LendTrackerDTO> findAllLists(){
         List<LendTrackerEntity> lendTrackerEntities = lendTrackerService.findAllLists();
-        lendTrackerEntities.sort((l1, l2) -> l1.getLendListsId() - l2.getLendListsId());
+        lendTrackerEntities.sort(Comparator.comparingInt(LendTrackerEntity::getLendListsId));
         return lendTrackerEntities.stream().map(list -> modelMapper.map(list, LendTrackerDTO.class)).collect(Collectors.toList()) ;
     }
 

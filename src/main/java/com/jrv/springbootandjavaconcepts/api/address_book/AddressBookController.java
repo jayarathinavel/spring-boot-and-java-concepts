@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/public/api/address-book")
+@RequestMapping("/api/address-book")
 public class AddressBookController {
 
     @Autowired

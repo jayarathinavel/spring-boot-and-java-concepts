@@ -1,5 +1,8 @@
 package com.jrv.springbootandjavaconcepts.java_concepts.multithreading_course.util;
 
+import com.jrv.springbootandjavaconcepts.java_concepts.multithreading_course.domain.checkout.Cart;
+import com.jrv.springbootandjavaconcepts.java_concepts.multithreading_course.domain.checkout.CartItem;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,7 +14,6 @@ public class DataSet {
 
     public static List<String> lowerCaseAlphabetList = List.of("a", "b", "c", "a", "d", "e", "f", "e", "g", "h", "i");
 
-/*
     public static Cart createCart(int noOfItemsInCart) {
 
         Cart cart = new Cart();
@@ -25,7 +27,6 @@ public class DataSet {
         cart.setCartItemList(cartItemList);
         return cart;
     }
-*/
 
     public static List<String> namesList() {
         return List.of("Bob", "Jamie", "Jill", "Rick");

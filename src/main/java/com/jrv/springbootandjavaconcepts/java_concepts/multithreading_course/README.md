@@ -11,3 +11,7 @@ Packages:
   - executor
   - forkjoin
   - parallel_streams
+  - completable_futures
+- libs - Movie API
+  - movies-restful-api.jar - Movies API Jar
+    - Swagger link : http://localhost:8080/movies/webjars/swagger-ui/index.html?configUrl=/movies/v3/api-docs/swagger-config
